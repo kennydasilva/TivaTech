@@ -12,10 +12,16 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(false)
 
+  // Como no design, a primeira página não tem menu: o cabeçalho só
+  // aparece depois de passar a capa.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      const hero = document.getElementById('inicio')
+      const limit = hero ? hero.offsetHeight * 0.6 : window.innerHeight * 0.6
+      setVisible(window.scrollY > limit)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -24,7 +30,7 @@ export default function Header() {
   const close = () => setOpen(false)
 
   return (
-    <header className={scrolled ? 'header header--scrolled' : 'header'}>
+    <header className={visible || open ? 'header is-visible' : 'header'}>
       <div className="header__inner">
         <a href="#inicio" className="header__brand" onClick={close}>
           <img src={logo} alt="TIVA TECH" />
