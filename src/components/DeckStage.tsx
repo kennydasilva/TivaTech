@@ -36,17 +36,26 @@ export default function DeckStage({ width = 1920, height = 1080, children }: Dec
   const [overlayPinned, setOverlayPinned] = useState(false)
   const idleTimer = useRef<number | undefined>(undefined)
 
-  const go = useCallback(
-    (n: number) => setIndex(Math.min(Math.max(n, 0), total - 1)),
-    [total],
-  )
-  const advance = useCallback((d: number) => setIndex((i) => Math.min(Math.max(i + d, 0), total - 1)), [total])
-
   const showOverlay = useCallback(() => {
     setOverlayVisible(true)
     window.clearTimeout(idleTimer.current)
     idleTimer.current = window.setTimeout(() => setOverlayVisible(false), IDLE_MS)
   }, [])
+
+  const go = useCallback(
+    (n: number) => {
+      setIndex(Math.min(Math.max(n, 0), total - 1))
+      showOverlay()
+    },
+    [total, showOverlay],
+  )
+  const advance = useCallback(
+    (d: number) => {
+      setIndex((i) => Math.min(Math.max(i + d, 0), total - 1))
+      showOverlay()
+    },
+    [total, showOverlay],
+  )
 
   // Letterboxed fit of the fixed design canvas into the viewport.
   useLayoutEffect(() => {
@@ -60,8 +69,7 @@ export default function DeckStage({ width = 1920, height = 1080, children }: Dec
   useEffect(() => {
     const hash = `#${index + 1}`
     if (window.location.hash !== hash) window.history.replaceState(null, '', hash)
-    showOverlay()
-  }, [index, showOverlay])
+  }, [index])
 
   useEffect(() => {
     const onHash = () => go(readHash(total))
@@ -106,6 +114,7 @@ export default function DeckStage({ width = 1920, height = 1080, children }: Dec
   }, [advance, go, total])
 
   useEffect(() => {
+    idleTimer.current = window.setTimeout(() => setOverlayVisible(false), IDLE_MS)
     const onMove = () => showOverlay()
     window.addEventListener('mousemove', onMove)
     return () => {
