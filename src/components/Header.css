@@ -1,0 +1,121 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.header--scrolled {
+  border-bottom-color: #e8edf4;
+  box-shadow: 0 6px 24px rgba(10, 31, 68, 0.06);
+}
+
+.header__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header__brand img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.header__nav a {
+  color: #26334f;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  transition: color 150ms ease;
+}
+.header__nav a:hover {
+  color: #16479f;
+}
+.header__nav .header__cta {
+  background: #16479f;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 0 12px 12px 0;
+  font-weight: 700;
+}
+.header__nav .header__cta:hover {
+  background: #0a1f44;
+  color: #ffffff;
+}
+
+.header__toggle {
+  display: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 10px;
+  margin-right: -10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+.header__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #0a1f44;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+.header__toggle[aria-expanded='true'] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__toggle[aria-expanded='true'] span:nth-child(2) {
+  opacity: 0;
+}
+.header__toggle[aria-expanded='true'] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 960px) {
+  .header__brand img {
+    height: 32px;
+  }
+  .header__toggle {
+    display: flex;
+  }
+  .header__nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e8edf4;
+    box-shadow: 0 16px 32px rgba(10, 31, 68, 0.08);
+    display: none;
+  }
+  .header__nav.is-open {
+    display: flex;
+  }
+  .header__nav a {
+    padding: 14px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #eef2f7;
+  }
+  .header__nav .header__cta {
+    margin-top: 16px;
+    text-align: center;
+    border-bottom: 0;
+  }
+}
