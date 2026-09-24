@@ -1,6 +1,6 @@
 # TivaTech
 
-Website da TivaTech: apresentação em React + TypeScript (Vite), feita a partir do design em `design/`.
+Website da TivaTech em React + TypeScript (Vite), baseado no design em `design/`.
 
 ## Desenvolvimento
 
@@ -11,9 +11,8 @@ npm run build    # build de produção em dist/
 npm run lint
 ```
 
-## Navegação
+## Estrutura
 
-- `←` / `→`, `↑` / `↓`, `PgUp` / `PgDn`, `Espaço`: slide anterior / seguinte
-- `1`–`8`: ir para um slide · `Home` / `R`: primeiro slide · `End`: último
-- Em ecrãs táteis: tocar na metade esquerda/direita
-- Cada slide tem link próprio (`/#3`) · Imprimir → PDF gera uma página por slide
+- `src/components/Header.tsx` — cabeçalho fixo com menu (e menu móvel)
+- `src/sections/` — uma secção por ficheiro (Início, Visão geral, Serviços, Porquê, Método, Projectos, Sobre nós, Contacto)
+- `src/sections/sections.css` — estilos responsivos das secções
