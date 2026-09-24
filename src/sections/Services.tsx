@@ -11,17 +11,19 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="slide services" data-label="Serviços">
-      <Eyebrow>SERVIÇOS</Eyebrow>
-      <h2>Tudo o que a sua empresa precisa em tecnologia.</h2>
-      <div className="services__grid">
-        {services.map((s) => (
-          <div className="service" key={s.tag}>
-            <div className="service__tag">{s.tag}</div>
-            <h3>{s.title}</h3>
-            <p>{s.text}</p>
-          </div>
-        ))}
+    <section className="section services" id="servicos">
+      <div className="container">
+        <Eyebrow>SERVIÇOS</Eyebrow>
+        <h2 className="title">Tudo o que a sua empresa precisa em tecnologia.</h2>
+        <div className="services__grid">
+          {services.map((s) => (
+            <div className="service" key={s.tag}>
+              <div className="service__tag">{s.tag}</div>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
