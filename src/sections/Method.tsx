@@ -10,21 +10,23 @@ const steps = [
 
 export default function Method() {
   return (
-    <section className="slide method" data-label="O nosso método">
-      <Eyebrow>O NOSSO MÉTODO</Eyebrow>
-      <h2>Resultados visíveis em semanas, não em meses.</h2>
-      <div className="method__steps">
-        <div className="method__track" />
-        {steps.map((s) => (
-          <div className="step" key={s.title}>
-            <div className="step__dot">
-              <span />
+    <section className="section method" id="metodo">
+      <div className="container">
+        <Eyebrow>O NOSSO MÉTODO</Eyebrow>
+        <h2 className="title">Resultados visíveis em semanas, não em meses.</h2>
+        <div className="method__steps">
+          <div className="method__track" />
+          {steps.map((s) => (
+            <div className="step" key={s.title}>
+              <div className="step__dot">
+                <span />
+              </div>
+              <div className="step__when">{s.when}</div>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
             </div>
-            <div className="step__when">{s.when}</div>
-            <h3>{s.title}</h3>
-            <p>{s.text}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )
