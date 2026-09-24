@@ -1,17 +1,20 @@
-import DeckStage from './components/DeckStage'
-import { About, Contact, Cover, Method, Overview, Projects, Services, Why } from './slides'
+import Header from './components/Header'
+import { About, Contact, Cover, Method, Overview, Projects, Services, Why } from './sections'
 
 export default function App() {
   return (
-    <DeckStage width={1920} height={1080}>
-      <Cover />
-      <Overview />
-      <Services />
-      <Why />
-      <Method />
-      <Projects />
-      <About />
+    <>
+      <Header />
+      <main>
+        <Cover />
+        <Overview />
+        <Services />
+        <Why />
+        <Method />
+        <Projects />
+        <About />
+      </main>
       <Contact />
-    </DeckStage>
+    </>
   )
 }
