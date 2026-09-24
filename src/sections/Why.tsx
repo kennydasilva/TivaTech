@@ -9,19 +9,21 @@ const reasons = [
 
 export default function Why() {
   return (
-    <section className="slide why" data-label="Porquê a TIVA TECH">
-      <Eyebrow light>PORQUÊ A TIVA TECH</Eyebrow>
-      <h2>
-        Tecnologia que trabalha para si, <span className="accent">não o contrário.</span>
-      </h2>
-      <div className="why__grid">
-        {reasons.map((r) => (
-          <div className="reason" key={r.title}>
-            <div className="reason__line" />
-            <h3>{r.title}</h3>
-            <p>{r.text}</p>
-          </div>
-        ))}
+    <section className="section why" id="porque">
+      <div className="container">
+        <Eyebrow light>PORQUÊ A TIVA TECH</Eyebrow>
+        <h2 className="title">
+          Tecnologia que trabalha para si, <span className="accent">não o contrário.</span>
+        </h2>
+        <div className="why__grid">
+          {reasons.map((r) => (
+            <div className="reason" key={r.title}>
+              <div className="reason__line" />
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
