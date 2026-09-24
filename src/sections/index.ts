@@ -1,4 +1,4 @@
-import './slides.css'
+import './sections.css'
 
 export { default as Cover } from './Cover'
 export { default as Overview } from './Overview'
