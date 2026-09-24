@@ -61,50 +61,16 @@
   color: #3cc3f2;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 28px;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
-}
-.btn--primary {
-  background: #16479f;
-  color: #ffffff;
-  border-radius: 0 14px 14px 0;
-}
-.btn--primary:hover {
-  background: #0a1f44;
-  color: #ffffff;
-}
-.btn--ghost {
-  color: #16479f;
-  border: 2px solid #d6e3f7;
-}
-.btn--ghost:hover {
-  border-color: #16479f;
-  color: #16479f;
-}
-
-/* Início (hero) — o "T" do logótipo desenhado com formas, como na capa */
+/* Início (hero) — réplica proporcional da capa do design (1920×1080).
+   --u é 1px do design convertido para a largura atual do ecrã. */
 .hero {
-  --u: calc(min(100vw, 1920px) / 1920);
+  --u: calc(100vw / 1920);
   background: #ffffff;
-  min-height: calc(100svh - var(--header-h));
+  min-height: max(100svh, calc(1080 * var(--u)));
   display: flex;
-  align-items: center;
-  width: 100%;
-}
-.hero > .container {
-  width: 100%;
-}
-.hero__art {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(110 * var(--u)) calc(140 * var(--u));
 }
 .hero__ring {
   position: absolute;
@@ -118,7 +84,7 @@
 .hero__bar {
   position: absolute;
   right: calc(120 * var(--u));
-  top: calc(180 * var(--u));
+  top: calc(260 * var(--u));
   width: calc(520 * var(--u));
   height: calc(120 * var(--u));
   background: #16479f;
@@ -127,33 +93,49 @@
 .hero__stem {
   position: absolute;
   right: calc(420 * var(--u));
-  top: calc(320 * var(--u));
+  top: calc(400 * var(--u));
   width: calc(170 * var(--u));
   height: calc(420 * var(--u));
   background: #19b5d6;
 }
-.hero__content > * {
-  max-width: 820px;
+.hero__logo {
+  position: relative;
+  align-self: flex-start;
+  height: max(36px, calc(70 * var(--u)));
+  width: auto;
+}
+.hero__content {
+  position: relative;
+  max-width: calc(1000 * var(--u));
+}
+.hero .eyebrow {
+  gap: max(10px, calc(18 * var(--u)));
+  font-size: max(12px, calc(26 * var(--u)));
+  margin-bottom: calc(40 * var(--u));
+}
+.hero .eyebrow > span {
+  width: max(8px, calc(16 * var(--u)));
+  height: max(8px, calc(16 * var(--u)));
 }
 .hero__title {
-  font-size: clamp(40px, 5.4vw, 88px);
+  font-size: max(40px, calc(104 * var(--u)));
   line-height: 1.04;
   letter-spacing: -0.03em;
   font-weight: 700;
-  margin: 0 0 clamp(20px, 2.2vw, 32px);
-  max-width: 13ch !important;
+  margin: 0 0 calc(40 * var(--u));
+  color: #0a1f44;
 }
 .hero__lead {
-  font-size: clamp(18px, 1.8vw, 26px);
+  font-size: max(18px, calc(34 * var(--u)));
   line-height: 1.5;
   color: #4a5872;
-  margin: 0 0 clamp(28px, 3vw, 44px);
-  max-width: 34ch !important;
+  margin: 0;
+  max-width: 34ch;
 }
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+.hero__url {
+  position: relative;
+  font-size: max(14px, calc(24 * var(--u)));
+  color: #5f6d85;
 }
 
 /* Visão geral */
@@ -546,8 +528,17 @@
 /* Mobile */
 @media (max-width: 760px) {
   .hero {
-    min-height: auto;
-    padding-top: 72px;
+    padding: 32px var(--gutter) 40px;
+    gap: 56px;
+  }
+  .hero__content {
+    max-width: none;
+  }
+  .hero .eyebrow {
+    margin-bottom: 20px;
+  }
+  .hero__title {
+    margin-bottom: 20px;
   }
   .hero__bar,
   .hero__stem {
