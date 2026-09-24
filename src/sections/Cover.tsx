@@ -1,21 +1,28 @@
 import Eyebrow from '../components/Eyebrow'
-import logo from '../assets/logo.png'
 
 export default function Cover() {
   return (
-    <section className="slide cover" data-label="Capa">
-      <div className="cover__ring" />
-      <div className="cover__bar" />
-      <div className="cover__stem" />
-      <img className="cover__logo" src={logo} alt="TIVA TECH" />
-      <div className="cover__content">
+    <section className="section hero" id="inicio">
+      <div className="hero__art" aria-hidden="true">
+        <div className="hero__ring" />
+        <div className="hero__bar" />
+        <div className="hero__stem" />
+      </div>
+      <div className="container hero__content">
         <Eyebrow>IT SERVICES &amp; CONSULTING</Eyebrow>
-        <h1 className="cover__title">Transformamos ideias em soluções digitais.</h1>
-        <p className="cover__lead">
+        <h1 className="hero__title">Transformamos ideias em soluções digitais.</h1>
+        <p className="hero__lead">
           Sistemas web, aplicações móveis, websites e automação de processos feitos à medida.
         </p>
+        <div className="hero__actions">
+          <a className="btn btn--primary" href="#contacto">
+            Fale connosco
+          </a>
+          <a className="btn btn--ghost" href="#servicos">
+            Ver serviços
+          </a>
+        </div>
       </div>
-      <div className="cover__url">tivatech.co.mz</div>
     </section>
   )
 }
