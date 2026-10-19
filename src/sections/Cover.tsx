@@ -1,21 +1,28 @@
-import Eyebrow from '../components/Eyebrow'
-import logo from '../assets/logo.png'
+import { useRef } from 'react'
+import Arrow from '../components/Arrow'
+import DotWave from '../components/DotWave'
+import { whatsappLink } from '../contact'
 
 export default function Cover() {
+  const text = useRef<HTMLDivElement>(null)
+
   return (
-    <section className="section hero" id="inicio">
-      <div className="hero__ring" aria-hidden="true" />
-      <div className="hero__bar" aria-hidden="true" />
-      <div className="hero__stem" aria-hidden="true" />
-      <img className="hero__logo" src={logo} alt="TIVA TECH" />
-      <div className="hero__content">
-        <Eyebrow>IT SERVICES &amp; CONSULTING</Eyebrow>
-        <h1 className="hero__title">Transformamos ideias em soluções digitais.</h1>
-        <p className="hero__lead">
-          Sistemas web, aplicações móveis, websites e automação de processos feitos à medida.
-        </p>
+    <section className="hero" id="inicio">
+      <DotWave above={text} />
+      <div className="hero__text gutter" ref={text}>
+        <h1 className="hero__title">
+          Tecnologia <span>à medida.</span>
+        </h1>
+        <p className="hero__lead">Sistemas web, aplicações e automação para empresas em Moçambique.</p>
+        <div className="hero__actions">
+          <a className="btn" href={whatsappLink()} target="_blank" rel="noreferrer">
+            Falar no WhatsApp <Arrow />
+          </a>
+          <a className="link" href="#servicos">
+            Ver serviços
+          </a>
+        </div>
       </div>
-      <div className="hero__url">tivatech.co.mz</div>
     </section>
   )
 }
