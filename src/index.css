@@ -1,8 +1,23 @@
+/* Identidade TIVA TECH: só branco e azuis da marca, letra larga (Syncopate)
+   nos títulos como a do logótipo e Work Sans no texto. */
 :root {
-  --container: 1400px;
-  --gutter: clamp(20px, 5vw, 64px);
-  --section-y: clamp(72px, 9vw, 140px);
-  --header-h: 76px;
+  --white: #ffffff;
+  --blue: #16479f;
+  --blue-field: #144496;
+  --blue-deep: #103a82;
+  --blue-bright: #3b78dc;
+  --blue-pale: #9cc4f2;
+  --blue-mist: #e3ecf8;
+  --blue-wash: #eef4fd;
+  --on-blue: #ffffff;
+  --on-blue-soft: #c9d8f2;
+
+  --wide: 'Syncopate', 'Arial Black', sans-serif;
+  --text: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  --container: 1280px;
+  --header-h: 80px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 *,
@@ -13,36 +28,139 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #0a1f44;
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--blue);
+  font: 400 1.0625rem/1.6 var(--text);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
 }
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 a {
-  color: #16479f;
-}
-a:hover {
-  color: #0a1f44;
+  color: inherit;
 }
 
-@media (max-width: 960px) {
+::selection {
+  background: var(--blue-pale);
+  color: var(--blue-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue-pale);
+  outline-offset: 4px;
+}
+
+.gutter {
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+.inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--white);
+  color: var(--blue);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+/* Botão: um só formato em todo o site. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  font: 600 1rem/1 var(--text);
+  padding: 16px 26px;
+  white-space: nowrap;
+  transition:
+    background-color 180ms ease,
+    transform 140ms ease;
+}
+.btn:hover {
+  background: var(--blue-deep);
+  color: var(--white);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn svg {
+  transition: transform 180ms ease;
+}
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Entradas: sobem uma vez ao entrar no ecrã (ver useReveal.ts). Sem
+   JavaScript ficam visíveis. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 900ms var(--ease-out) var(--reveal-delay, 0ms),
+    transform 900ms var(--ease-out) var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 860px) {
   :root {
-    --header-h: 64px;
+    --header-h: 76px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
