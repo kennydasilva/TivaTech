@@ -1,18 +1,23 @@
 import Header from './components/Header'
-import { About, Contact, Cover, Method, Overview, Projects, Services, Why } from './sections'
+import { Contact, Cover, Method, Paper, Services, Why } from './sections'
+import useReveal from './useReveal'
+import './sections/sections.css'
 
 export default function App() {
+  useReveal()
+
   return (
     <>
+      <a className="skip-link" href="#conteudo">
+        Saltar para o conteúdo
+      </a>
       <Header />
-      <main>
+      <main id="conteudo">
         <Cover />
-        <Overview />
+        <Paper />
         <Services />
-        <Why />
         <Method />
-        <Projects />
-        <About />
+        <Why />
       </main>
       <Contact />
     </>

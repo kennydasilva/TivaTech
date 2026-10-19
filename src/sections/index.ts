@@ -1,10 +1,6 @@
-import './sections.css'
-
 export { default as Cover } from './Cover'
-export { default as Overview } from './Overview'
+export { default as Paper } from './Paper'
 export { default as Services } from './Services'
-export { default as Why } from './Why'
 export { default as Method } from './Method'
-export { default as Projects } from './Projects'
-export { default as About } from './About'
+export { default as Why } from './Why'
 export { default as Contact } from './Contact'
