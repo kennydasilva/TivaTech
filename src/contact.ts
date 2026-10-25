@@ -1,8 +1,8 @@
 // Contactos da TIVA TECH, usados em todo o site.
-// A CONFIRMAR: o número de WhatsApp e as ligações das redes sociais são
-// provisórios. Trocar pelos reais antes de publicar.
-export const WHATSAPP_NUMBER = '258000000000'
-export const WHATSAPP_LABEL = '+258 00 000 0000'
+// O número de WhatsApp é o dos vídeos promocionais. A CONFIRMAR: as
+// ligações das redes sociais ainda estão vazias.
+export const WHATSAPP_NUMBER = '258833354327'
+export const WHATSAPP_LABEL = '+258 83 335 4327'
 export const EMAIL = 'info@tivatech.co.mz'
 
 export const SOCIAL = {
