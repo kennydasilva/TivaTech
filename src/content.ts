@@ -81,9 +81,20 @@ const pt = {
     lead: 'O problema, a solução e o que mudou para o cliente, em cada caso.',
     all: 'Explorar todos os projectos',
     items: [
-      { kind: 'Sistema de gestão', name: 'Nome do projecto', text: 'Problema, solução e resultado do cliente, em duas linhas.' },
-      { kind: 'Website e loja online', name: 'Nome do projecto', text: 'Problema, solução e resultado do cliente, em duas linhas.' },
-      { kind: 'Aplicação móvel', name: 'Nome do projecto', text: 'Problema, solução e resultado do cliente, em duas linhas.' },
+      {
+        kind: 'Plataforma web com IA',
+        name: 'SGDIT',
+        subtitle: 'Gestão de denúncias de infracções de trânsito',
+        text: 'O cidadão denuncia pelo telemóvel e envia o vídeo. A IA analisa a infracção e o caso chega ao posto policial certo, com a prova registada.',
+        tags: ['Web', 'Visão computacional', 'Mapas'],
+      },
+      {
+        kind: 'Web e telemóvel com IA',
+        name: 'App de treino',
+        subtitle: 'Um coach com IA que cria o plano de cada pessoa',
+        text: 'Mais de 1300 exercícios com demonstração, vídeos de treino, yoga e mindfulness, e o passo a passo de cada exercício, num só lugar.',
+        tags: ['Web', 'Mobile', 'IA'],
+      },
     ],
   },
   why: {
@@ -258,9 +269,20 @@ const en: Content = {
     lead: 'The problem, the solution and what changed for the client, in each case.',
     all: 'See all projects',
     items: [
-      { kind: 'Management system', name: 'Project name', text: 'The client’s problem, the solution and the result, in two lines.' },
-      { kind: 'Website and online store', name: 'Project name', text: 'The client’s problem, the solution and the result, in two lines.' },
-      { kind: 'Mobile app', name: 'Project name', text: 'The client’s problem, the solution and the result, in two lines.' },
+      {
+        kind: 'Web platform with AI',
+        name: 'SGDIT',
+        subtitle: 'Traffic violation reporting and management',
+        text: 'Citizens report a violation from their phone and upload the video. AI analyses it and the case reaches the right police station, with the evidence on record.',
+        tags: ['Web', 'Computer vision', 'Maps'],
+      },
+      {
+        kind: 'Web and mobile with AI',
+        name: 'Training app',
+        subtitle: 'An AI coach that builds each person’s plan',
+        text: 'Over 1,300 exercises with demonstrations, workout, yoga and mindfulness videos, and step-by-step guidance for every exercise, all in one place.',
+        tags: ['Web', 'Mobile', 'AI'],
+      },
     ],
   },
   why: {

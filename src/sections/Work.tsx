@@ -1,12 +1,59 @@
-import app from '../assets/photos/project-app.jpg'
-import dashboard from '../assets/photos/project-dashboard.jpg'
-import website from '../assets/photos/project-website.jpg'
+import { useEffect, useRef } from 'react'
+import appPoster from '../assets/projects/app-treino-poster.jpg'
+import appVideo from '../assets/projects/app-treino.mp4'
+import sgditPoster from '../assets/projects/sgdit-poster.jpg'
+import sgditVideo from '../assets/projects/sgdit.mp4'
 import { useLang } from '../LangContext'
 
-const IMAGES = [dashboard, website, app]
+const MEDIA = [
+  { video: sgditVideo, poster: sgditPoster },
+  { video: appVideo, poster: appPoster },
+]
 
-// Projectos seleccionados. As imagens e os textos são genéricos até haver
-// capturas e resultados dos projectos reais.
+// Recorte do vídeo promocional do projecto: sem som, em loop, só a tocar
+// quando está no ecrã. Com "reduzir movimento" fica no poster.
+function ProjectVideo({ src, poster }: { src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let visible = false
+    const sync = () => {
+      if (visible && !calm.matches) video.play().catch(() => {})
+      else video.pause()
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting
+      sync()
+    })
+    io.observe(video)
+    calm.addEventListener('change', sync)
+    return () => {
+      io.disconnect()
+      calm.removeEventListener('change', sync)
+    }
+  }, [])
+
+  return (
+    <video
+      ref={ref}
+      className="case__video"
+      src={src}
+      poster={poster}
+      width={540}
+      height={676}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-hidden="true"
+    />
+  )
+}
+
+// Projectos reais, cada um com um recorte do seu vídeo promocional.
 export default function Work() {
   const { t } = useLang()
   return (
@@ -23,14 +70,22 @@ export default function Work() {
             {t.work.all}
           </a>
         </div>
-        <div className="cards">
+        <div className="cases">
           {t.work.items.map((item, i) => (
-            <a key={i} className="project" href="#projectos" data-reveal>
-              <img src={IMAGES[i]} alt="" width={1400} height={933} loading="lazy" />
-              <span className="project__kind">{item.kind}</span>
-              <h3 className="project__name">{item.name}</h3>
-              <p>{item.text}</p>
-            </a>
+            <article key={item.name} className="case" data-reveal>
+              <ProjectVideo src={MEDIA[i].video} poster={MEDIA[i].poster} />
+              <div className="case__body">
+                <span className="case__kind">{item.kind}</span>
+                <h3 className="case__name">{item.name}</h3>
+                <p className="case__subtitle">{item.subtitle}</p>
+                <p>{item.text}</p>
+                <ul className="case__tags">
+                  {item.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
           ))}
         </div>
       </div>

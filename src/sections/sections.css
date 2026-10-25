@@ -366,36 +366,68 @@
 }
 
 /* ---------- Projectos ---------- */
-.project {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  color: var(--ink);
-  text-decoration: none;
+.cases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
 }
-.project img {
+.case {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 20px;
+  background: var(--blue-wash);
+}
+.case__video {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: var(--radius);
-  transition: transform 300ms var(--ease-out);
+  border-radius: 14px;
+  background: var(--blue);
 }
-.project:hover img {
-  transform: scale(1.02);
+.case__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-right: 8px;
 }
-.project__kind {
+.case__kind {
   color: var(--blue-bright);
   font-weight: 600;
   font-size: 0.875rem;
 }
-.project__name {
-  font: 600 1.375rem/1.25 var(--text);
+.case__name {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
-.project:hover .project__name {
-  text-decoration: underline;
+.case__subtitle {
+  color: var(--blue);
+  font-weight: 600;
 }
-
+.case__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.case__tags li {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
 /* ---------- Porquê a TivaTech ---------- */
 .why__image {
   display: block;
@@ -992,7 +1024,8 @@
   .split--about,
   .split--faq,
   .cta,
-  .cards {
+  .cards,
+  .cases {
     grid-template-columns: minmax(0, 1fr);
   }
   .split--tabs {
@@ -1033,6 +1066,12 @@
   }
   .tabs__button {
     font-size: 1.25rem;
+  }
+  .case {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .case__body {
+    padding: 0 8px 8px;
   }
   .tech {
     width: 140px;
