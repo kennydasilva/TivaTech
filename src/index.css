@@ -1,22 +1,24 @@
-/* Identidade TIVA TECH: só branco e azuis da marca, letra larga (Syncopate)
-   nos títulos como a do logótipo e Work Sans no texto. */
+/* Identidade TIVA TECH: branco e azuis da marca, uma tinta escura para o
+   texto corrido, Unbounded nos títulos e Work Sans no texto. */
 :root {
   --white: #ffffff;
   --blue: #16479f;
   --blue-field: #144496;
   --blue-deep: #103a82;
+  --blue-night: #0d3170;
   --blue-bright: #3b78dc;
   --blue-pale: #9cc4f2;
   --blue-mist: #e3ecf8;
   --blue-wash: #eef4fd;
   --on-blue: #ffffff;
   --on-blue-soft: #c9d8f2;
+  --ink: #1b2433;
 
-  --wide: 'Syncopate', 'Arial Black', sans-serif;
+  --display: 'Unbounded', 'Arial Black', sans-serif;
   --text: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
 
-  --container: 1280px;
-  --header-h: 80px;
+  --container: 1200px;
+  --radius: 16px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -28,15 +30,15 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h);
+  scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   background: var(--white);
-  color: var(--blue);
-  font: 400 1.0625rem/1.6 var(--text);
+  color: var(--ink);
+  font: 400 1.0625rem/1.55 var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -45,10 +47,14 @@ h1,
 h2,
 h3 {
   margin: 0;
+  color: var(--blue);
   text-wrap: balance;
 }
 
-p {
+p,
+dl,
+dd,
+figure {
   margin: 0;
 }
 
@@ -58,7 +64,10 @@ img {
 }
 
 a {
-  color: inherit;
+  color: var(--blue);
+}
+a:hover {
+  color: var(--blue-deep);
 }
 
 ::selection {
@@ -67,18 +76,30 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue-pale);
-  outline-offset: 4px;
+  outline: 2px solid var(--blue-bright);
+  outline-offset: 3px;
 }
 
-.gutter {
-  padding-left: max(20px, env(safe-area-inset-left, 0px));
-  padding-right: max(20px, env(safe-area-inset-right, 0px));
-}
-
-.inner {
+.wrap {
+  width: 100%;
   max-width: var(--container);
   margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.title--section {
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+}
+
+.lead {
+  font-size: 1.0625rem;
+  max-width: 52ch;
 }
 
 .visually-hidden {
@@ -96,6 +117,7 @@ a {
   left: 12px;
   z-index: 100;
   padding: 12px 20px;
+  border-radius: 8px;
   background: var(--white);
   color: var(--blue);
   font-weight: 600;
@@ -105,19 +127,25 @@ a {
   transform: none;
 }
 
-/* Botão: um só formato em todo o site. */
+/* Botões: um só formato, cantos de 8px. */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 8px;
   background: var(--blue);
   color: var(--white);
-  text-decoration: none;
   font: 600 1rem/1 var(--text);
-  padding: 16px 26px;
+  text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
   transition:
     background-color 180ms ease,
+    color 180ms ease,
     transform 140ms ease;
 }
 .btn:hover {
@@ -127,31 +155,47 @@ a {
 .btn:active {
   transform: scale(0.97);
 }
-.btn svg {
-  transition: transform 180ms ease;
+.btn--light {
+  background: var(--white);
+  color: var(--blue);
 }
-.btn:hover svg {
-  transform: translateX(4px);
+.btn--light:hover {
+  background: var(--blue-mist);
+  color: var(--blue-deep);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--blue);
+  box-shadow: inset 0 0 0 2px var(--blue);
+}
+.btn--ghost:hover {
+  background: var(--blue-mist);
+  color: var(--blue-deep);
+}
+.btn--field {
+  background: var(--blue-field);
+}
+
+.link {
+  font-weight: 600;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
 }
 
 /* Entradas: sobem uma vez ao entrar no ecrã (ver useReveal.ts). Sem
    JavaScript ficam visíveis. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(24px);
   transition:
-    opacity 900ms var(--ease-out) var(--reveal-delay, 0ms),
-    transform 900ms var(--ease-out) var(--reveal-delay, 0ms);
+    opacity 800ms var(--ease-out) var(--reveal-delay, 0ms),
+    transform 800ms var(--ease-out) var(--reveal-delay, 0ms);
 }
 .js [data-reveal].is-in {
   opacity: 1;
   transform: none;
-}
-
-@media (max-width: 860px) {
-  :root {
-    --header-h: 76px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
