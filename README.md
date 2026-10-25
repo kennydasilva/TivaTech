@@ -20,11 +20,11 @@ npm run lint
 ## Estrutura
 
 - `src/components/Header.tsx` — barra azul flutuante com o logótipo oficial, menu em ecrãs pequenos e selector PT/EN
-- `src/components/Footer.tsx` — rodapé com marca, redes sociais, ligações e créditos das fotografias
+- `src/components/Footer.tsx` — rodapé com marca, redes sociais, ligações e informação legal
 - `src/sections/` — uma secção por ficheiro: Hero, O que fazemos (separadores), Serviços, Tecnologias (carrossel com filtros), Projectos, Porquê a TivaTech, Como trabalhamos, Sobre, Perguntas frequentes, Conversão (com a animação pedido → sistema)
 - `src/sections/sections.css` — estilos das secções; cores e letras em `src/index.css`
 - `src/tech.ts` — lista de tecnologias e categorias do carrossel; logótipos em `src/assets/tech/`
-- `src/assets/photos/` — fotografias do Pexels e uma da Baixa de Maputo (Wikimedia Commons, CC BY-SA 2.0, creditada no rodapé)
+- `src/assets/photos/` — fotografias do Pexels (licença gratuita, sem crédito obrigatório)
 - `src/contact.ts` — WhatsApp, e-mail e redes sociais (**a confirmar**: o número e as ligações das redes ainda são provisórios)
 
 Identidade: branco e azuis da marca, texto corrido em tinta escura (`#1b2433`); títulos em Unbounded, texto em Work Sans.
