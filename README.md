@@ -32,5 +32,4 @@ Identidade: branco e azuis da marca, texto corrido em tinta escura (`#1b2433`); 
 ## Por fazer
 
 - Capturas e textos reais dos projectos (as imagens actuais são genéricas).
-- Logótipo oficial do e-Mola.
 - Páginas internas: serviços, projectos, empresa, contactos (com formulário), privacidade e termos.
