@@ -25,11 +25,12 @@ npm run lint
 - `src/sections/sections.css` — estilos das secções; cores e letras em `src/index.css`
 - `src/tech.ts` — lista de tecnologias e categorias do carrossel; logótipos em `src/assets/tech/`
 - `src/assets/photos/` — fotografias do Pexels (licença gratuita, sem crédito obrigatório)
-- `src/contact.ts` — WhatsApp, e-mail e redes sociais (**a confirmar**: o número e as ligações das redes ainda são provisórios)
+- `src/assets/projects/` — recortes dos vídeos promocionais dos projectos (sem som, 4:5, ~420 KB) e respectivos posters; os vídeos originais ficam em `videos/`, fora do repositório
+- `src/contact.ts` — WhatsApp (+258 83 335 4327), e-mail e redes sociais (**a confirmar**: as ligações das redes ainda estão vazias)
 
 Identidade: branco e azuis da marca, texto corrido em tinta escura (`#1b2433`); títulos em Unbounded, texto em Work Sans.
 
 ## Por fazer
 
-- Capturas e textos reais dos projectos (as imagens actuais são genéricas).
+- Mais projectos reais (para já: SGDIT e App de treino).
 - Páginas internas: serviços, projectos, empresa, contactos (com formulário), privacidade e termos.
