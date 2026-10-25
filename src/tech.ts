@@ -1,13 +1,13 @@
 import type { TechCategory } from './content'
 
-// Logótipos a cores em src/assets/tech, pelo nome do ficheiro.
-const logos = import.meta.glob<string>('./assets/tech/*.svg', { eager: true, import: 'default', query: '?url' })
-const logo = (file: string) => logos[`./assets/tech/${file}.svg`]
+// Logótipos a cores em src/assets/tech, pelo nome do ficheiro. O M-Pesa e
+// o e-Mola usam o ícone oficial das aplicações (PNG).
+const logos = import.meta.glob<string>('./assets/tech/*.{svg,png}', { eager: true, import: 'default', query: '?url' })
+const logo = (file: string) => logos[`./assets/tech/${file}.svg`] ?? logos[`./assets/tech/${file}.png`]
 
-export type Tech = { name: string; category: TechCategory; logo?: string }
+export type Tech = { name: string; category: TechCategory; logo: string }
 
 // Ordenadas por categoria, que é a ordem em que aparecem no carrossel.
-// O e-Mola ainda não tem ficheiro oficial: o cartão mostra o nome.
 export const TECH: Tech[] = [
   { name: 'Java', category: 'dev', logo: logo('java') },
   { name: 'Spring Boot', category: 'dev', logo: logo('spring') },
@@ -34,7 +34,7 @@ export const TECH: Tech[] = [
   { name: 'Kubernetes', category: 'cloud', logo: logo('kubernetes') },
   { name: 'GitHub', category: 'cloud', logo: logo('github') },
   { name: 'M-Pesa', category: 'apis', logo: logo('mpesa') },
-  { name: 'e-Mola', category: 'apis' },
+  { name: 'e-Mola', category: 'apis', logo: logo('emola') },
   { name: 'Google Maps', category: 'apis', logo: logo('googlemaps') },
   { name: 'Stripe', category: 'apis', logo: logo('stripe') },
   { name: 'PayPal', category: 'apis', logo: logo('paypal') },

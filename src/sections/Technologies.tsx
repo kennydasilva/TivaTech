@@ -5,11 +5,11 @@ import { TECH, type Tech } from '../tech'
 
 type Filter = 'all' | TechCategory
 
-function TechCard({ tech, caption }: { tech: Tech; caption: string }) {
+function TechCard({ tech }: { tech: Tech }) {
   return (
     <div className="tech">
-      {tech.logo ? <img src={tech.logo} alt="" width={48} height={48} loading="lazy" /> : <b className="tech__word">{tech.name}</b>}
-      <span>{tech.logo ? tech.name : caption}</span>
+      <img src={tech.logo} alt="" width={48} height={48} loading="lazy" />
+      <span>{tech.name}</span>
     </div>
   )
 }
@@ -42,7 +42,7 @@ export default function Technologies() {
             <div className="marquee__track">
               {[...TECH, ...TECH].map((tech, i) => (
                 <div key={`${tech.name}-${i}`} aria-hidden={i >= TECH.length || undefined}>
-                  <TechCard tech={tech} caption={t.tech.walletCaption} />
+                  <TechCard tech={tech} />
                 </div>
               ))}
             </div>
@@ -50,7 +50,7 @@ export default function Technologies() {
         ) : (
           <div className="tech-grid">
             {TECH.filter((tech) => tech.category === filter).map((tech) => (
-              <TechCard key={tech.name} tech={tech} caption={t.tech.walletCaption} />
+              <TechCard key={tech.name} tech={tech} />
             ))}
           </div>
         )}

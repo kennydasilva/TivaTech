@@ -65,7 +65,6 @@ const pt = {
     lead: 'Escolhemos a ferramenta pelo problema. Estas são as que usamos no dia-a-dia.',
     filter: 'Filtrar tecnologias',
     all: 'Todas',
-    walletCaption: 'Carteira móvel',
     categories: {
       dev: 'Desenvolvimento',
       mobile: 'Mobile',
@@ -244,7 +243,6 @@ const en: Content = {
     lead: 'We pick the tool for the problem. These are the ones we use every day.',
     filter: 'Filter technologies',
     all: 'All',
-    walletCaption: 'Mobile wallet',
     categories: {
       dev: 'Development',
       mobile: 'Mobile',

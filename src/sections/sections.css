@@ -313,11 +313,8 @@
   max-width: 112px;
   object-fit: contain;
 }
-.tech__word {
-  display: flex;
-  align-items: center;
-  height: 48px;
-  font-size: 1.25rem;
+.tech img[src$='.png'] {
+  border-radius: 12px;
 }
 
 .marquee {
