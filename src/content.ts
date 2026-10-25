@@ -117,7 +117,7 @@ const pt = {
       { label: 'Clientes', value: 'Moçambique e exterior' },
     ],
     action: 'Conhecer a empresa',
-    imageAlt: 'Rua Consiglieri Pedroso, na Baixa de Maputo',
+    imageAlt: 'Dois profissionais a analisar um sistema num portátil',
   },
   faq: {
     title: 'Perguntas frequentes',
@@ -177,7 +177,6 @@ const pt = {
     contact: 'Contacto',
     privacy: 'Privacidade',
     terms: 'Termos',
-    credits: 'Fotografias: Pexels · “Rua Consiglieri Pedroso” por Waar was Frank?, CC BY-SA 2.0, via Wikimedia Commons',
   },
 }
 
@@ -295,7 +294,7 @@ const en: Content = {
       { label: 'Clients', value: 'Mozambique and abroad' },
     ],
     action: 'Meet the company',
-    imageAlt: 'Rua Consiglieri Pedroso, in downtown Maputo',
+    imageAlt: 'Two professionals reviewing a system on a laptop',
   },
   faq: {
     title: 'Frequently asked questions',
@@ -355,7 +354,6 @@ const en: Content = {
     contact: 'Contact',
     privacy: 'Privacy',
     terms: 'Terms',
-    credits: 'Photos: Pexels · “Rua Consiglieri Pedroso” by Waar was Frank?, CC BY-SA 2.0, via Wikimedia Commons',
   },
 }
 

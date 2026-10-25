@@ -1,4 +1,4 @@
-import maputo from '../assets/photos/maputo-baixa.jpg'
+import team from '../assets/photos/about-team.jpg'
 import { useLang } from '../LangContext'
 
 // Quem está por trás das soluções. A página "Sobre" completa terá o resto.
@@ -24,7 +24,7 @@ export default function About() {
             {t.about.action}
           </a>
         </div>
-        <img className="about__image" src={maputo} alt={t.about.imageAlt} width={1400} height={933} loading="lazy" />
+        <img className="about__image" src={team} alt={t.about.imageAlt} width={1400} height={933} loading="lazy" />
       </div>
     </section>
   )

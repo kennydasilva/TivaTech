@@ -75,7 +75,6 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} TIVA TECH · <a href="#privacidade">{f.privacy}</a> · <a href="#termos">{f.terms}</a>
           </span>
-          <span>{f.credits}</span>
         </div>
       </div>
     </footer>
