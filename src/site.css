@@ -711,10 +711,6 @@
   .top__contact {
     display: inline;
   }
-  .hero__content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
   .split,
   .service,
   .cases,
@@ -733,6 +729,17 @@
   }
   .top__end {
     gap: 16px;
+  }
+  /* Telemóvel: "T" mais pequeno, com o texto ao lado. */
+  .hero__content {
+    gap: 16px;
+  }
+  .hero__mark {
+    height: 64px;
+  }
+  .hero__lead,
+  .hero__typed {
+    font-size: 1.375rem;
   }
   .hero__typed {
     min-height: 2.4em;
