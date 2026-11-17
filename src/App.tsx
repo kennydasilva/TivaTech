@@ -5,7 +5,7 @@ import Intro from './components/Intro'
 import { content } from './content'
 import { langFromPath, pathFor, type Lang } from './i18n'
 import { LangContext } from './LangContext'
-import { About, Contact, Faq, Hero, Needs, Process, Sectors, Services, Work } from './sections'
+import { About, Contact, Faq, Hero, Needs, Sectors, Services, Work } from './sections'
 import useReveal from './useReveal'
 import './site.css'
 
@@ -74,7 +74,6 @@ export default function App() {
           <Needs />
           <Work />
           <Sectors />
-          <Process />
           <Faq />
           <Contact />
         </main>

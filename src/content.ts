@@ -88,18 +88,8 @@ const pt = {
       },
     ],
   },
-  process: {
-    title: 'Como trabalhamos',
-    steps: [
-      { when: 'Semana 1', name: 'Conversa', text: 'Ouvimos como funciona o seu negócio e o que precisa de resolver.' },
-      { when: '1 a 2 semanas', name: 'Proposta', text: 'Enviamos por escrito o que vamos fazer, quanto tempo leva e quanto custa.' },
-      { when: '4 a 12 semanas', name: 'Construção', text: 'Mostramos o trabalho por partes, para ir vendo e dando a sua opinião.' },
-      { when: '1 semana', name: 'Entrega', text: 'Experimentamos com a sua informação real, pomos a funcionar e ensinamos a equipa a usar.' },
-      { when: 'Depois', name: 'Apoio', text: 'Ajudamos com dúvidas e problemas e acrescentamos o que for preciso, se contratar.' },
-    ],
-  },
   sectors: {
-    title: 'Sectores',
+    title: 'Para quem trabalhamos',
     items: [
       { title: 'Comércio', text: 'Vendas, stock e facturação num só programa, com pagamentos por M‑Pesa e e‑Mola.' },
       {
@@ -237,18 +227,8 @@ const en: Content = {
       },
     ],
   },
-  process: {
-    title: 'How we work',
-    steps: [
-      { when: 'Week 1', name: 'Conversation', text: 'We learn how your business works and what you need to solve.' },
-      { when: '1 to 2 weeks', name: 'Proposal', text: 'We send in writing what we will do, how long it takes and what it costs.' },
-      { when: '4 to 12 weeks', name: 'Building', text: 'We show you the work in parts, so you can see it and give your opinion.' },
-      { when: '1 week', name: 'Handover', text: 'We try it with your real information, switch it on and teach your team to use it.' },
-      { when: 'After', name: 'Support', text: 'We help with questions and problems and add what you need, if you want.' },
-    ],
-  },
   sectors: {
-    title: 'Sectors',
+    title: 'Who we work for',
     items: [
       { title: 'Retail', text: 'Sales, stock and invoicing in one program, with M‑Pesa and e‑Mola payments.' },
       {

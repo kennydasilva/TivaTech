@@ -14,25 +14,26 @@ const ICONS = [
   'M12 7c-2-1.5-5-2-8-1.5v12c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-12c-3-.5-6 0-8 1.5zM12 7v12',
 ]
 
-// Os sectores em grelha, com o título grande na primeira casa (como os
-// "Verticais" do Void).
+// Sectores numa lista com linhas: ícone pequeno, nome e uma frase.
 export default function Sectors() {
   const { t } = useLang()
   return (
     <section id="sectores" className="sec sec--white" aria-labelledby="sectores-title">
-      <div className="wrap sectors">
-        <h2 id="sectores-title" className="sec__title sectors__title" data-reveal>
+      <div className="wrap">
+        <h2 id="sectores-title" className="sec__title" data-reveal>
           {t.sectors.title}
         </h2>
-        {t.sectors.items.map((item, i) => (
-          <div key={item.title} className="sector" data-reveal>
-            <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
-              <path d={ICONS[i]} fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </div>
-        ))}
+        <ul className="sectors">
+          {t.sectors.items.map((item, i) => (
+            <li key={item.title} className="sector" data-reveal>
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+                <path d={ICONS[i]} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
