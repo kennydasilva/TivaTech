@@ -20,7 +20,7 @@ export default function useReveal(key: string | null) {
       { rootMargin: '0px 0px -8% 0px' },
     )
     items.forEach((el, i) => {
-      el.style.setProperty('--reveal-delay', `${(i % 6) * 70}ms`)
+      if (!el.style.getPropertyValue('--reveal-delay')) el.style.setProperty('--reveal-delay', `${(i % 6) * 70}ms`)
       io.observe(el)
     })
     return () => io.disconnect()

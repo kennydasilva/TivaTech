@@ -4,6 +4,7 @@ import appVideo from '../assets/projects/app-treino.mp4'
 import sgditPoster from '../assets/projects/sgdit-poster.jpg'
 import sgditVideo from '../assets/projects/sgdit.mp4'
 import { useLang } from '../LangContext'
+import Words from '../components/Words'
 
 const MEDIA = [
   { video: sgditVideo, poster: sgditPoster },
@@ -60,8 +61,8 @@ export default function Work() {
   return (
     <section id="projectos" className="sec sec--navy" aria-labelledby="proj-title">
       <div className="wrap">
-        <h2 id="proj-title" className="sec__title" data-reveal>
-          {t.work.title}
+        <h2 id="proj-title" className="sec__title words" data-reveal>
+          <Words text={t.work.title} />
         </h2>
         <div className="cases">
           {t.work.items.map((item, i) => (

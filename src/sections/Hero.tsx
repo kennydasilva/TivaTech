@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import bgVideo from '../assets/bg.mp4'
 import mark from '../assets/t-branco.png'
+import Words from '../components/Words'
 import { useLang } from '../LangContext'
 
 const TYPE_MS = 75
@@ -90,14 +91,19 @@ export default function Hero() {
       <video ref={ref} className="hero__bg" src={bgVideo} muted loop playsInline preload="auto" aria-hidden="true" />
       <div className="wrap hero__content">
         <img className="hero__mark" src={mark} alt="" width={190} height={159} data-reveal />
-        <div data-reveal>
+        <div>
           <h1 id="hero-title" className="visually-hidden">
             {t.hero.title}
           </h1>
-          <p className="hero__lead" aria-hidden="true">
-            {t.hero.lead}
+          <p className="hero__lead words" aria-hidden="true" data-reveal>
+            <Words text={t.hero.lead} />
           </p>
-          <p className="hero__typed" aria-hidden="true">
+          <p
+            className="hero__typed"
+            aria-hidden="true"
+            data-reveal
+            style={{ '--reveal-delay': '500ms' } as CSSProperties}
+          >
             {typed}
             <span className="hero__cursor" />
           </p>

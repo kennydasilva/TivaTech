@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { EMAIL, WHATSAPP_LABEL, whatsappLink, whatsappMessage } from '../contact'
 import { useLang } from '../LangContext'
+import Words from '../components/Words'
 
 // Formulário curto que abre o WhatsApp com a mensagem já escrita (não há
 // servidor por trás). Ao lado, onde estamos e os contactos directos.
@@ -23,8 +24,8 @@ export default function Contact() {
     <section id="contacto" className="sec sec--blue" aria-labelledby="contacto-title">
       <div className="wrap split">
         <div>
-          <h2 id="contacto-title" className="sec__title" data-reveal>
-            {c.title}
+          <h2 id="contacto-title" className="sec__title words" data-reveal>
+            <Words text={c.title} />
           </h2>
           <p className="contact__text" data-reveal>
             {c.text}

@@ -102,27 +102,63 @@ a {
   transform: none;
 }
 
-/* Entradas: sobem uma vez ao entrar no ecrã (ver useReveal.ts). Sem
-   JavaScript ficam visíveis. */
+/* Entradas: sobem e ganham nitidez uma vez ao entrar no ecrã, como na
+   abertura (ver useReveal.ts). Sem JavaScript ficam visíveis. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(12px);
+  filter: blur(6px);
   transition:
-    opacity 700ms var(--ease-out) var(--reveal-delay, 0ms),
-    transform 700ms var(--ease-out) var(--reveal-delay, 0ms);
+    opacity 800ms var(--ease-out) var(--reveal-delay, 0ms),
+    transform 800ms var(--ease-out) var(--reveal-delay, 0ms),
+    filter 800ms var(--ease-out) var(--reveal-delay, 0ms);
 }
 .js [data-reveal].is-in {
   opacity: 1;
   transform: none;
+  filter: none;
+}
+
+/* Texto palavra a palavra (componente Words). */
+.js [data-reveal].words {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+.words > span {
+  display: inline-block;
+}
+.js .words > span {
+  opacity: 0;
+}
+.js .words.is-in > span {
+  animation: word-in 750ms var(--ease-out) both;
+  animation-delay: calc(var(--reveal-delay, 0ms) + var(--i) * 90ms);
+}
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .js [data-reveal] {
+  .js [data-reveal],
+  .js .words > span {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
+    animation: none;
   }
 }

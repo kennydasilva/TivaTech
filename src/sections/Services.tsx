@@ -1,4 +1,5 @@
 import { useLang } from '../LangContext'
+import Words from '../components/Words'
 
 // Os serviços em letra grande, um por linha, com a frase ao lado.
 export default function Services() {
@@ -6,8 +7,8 @@ export default function Services() {
   return (
     <section id="servicos" className="sec sec--white" aria-labelledby="servicos-title">
       <div className="wrap">
-        <h2 id="servicos-title" className="sec__title" data-reveal>
-          {t.services.title}
+        <h2 id="servicos-title" className="sec__title words" data-reveal>
+          <Words text={t.services.title} />
         </h2>
         <ul className="services">
           {t.services.items.map((item) => (

@@ -1,4 +1,5 @@
 import { useLang } from '../LangContext'
+import Words from '../components/Words'
 
 // Quem somos: título grande à esquerda, texto à direita.
 export default function About() {
@@ -6,8 +7,8 @@ export default function About() {
   return (
     <section id="sobre" className="sec sec--navy" aria-labelledby="sobre-title">
       <div className="wrap split">
-        <h2 id="sobre-title" className="sec__title" data-reveal>
-          {t.about.title}
+        <h2 id="sobre-title" className="sec__title words" data-reveal>
+          <Words text={t.about.title} />
         </h2>
         <div className="prose">
           {t.about.paragraphs.map((p) => (

@@ -1,4 +1,6 @@
+import type { CSSProperties } from 'react'
 import { useLang } from '../LangContext'
+import Words from '../components/Words'
 
 // Ícones de linha, um por sector, pela mesma ordem do content.ts.
 const ICONS = [
@@ -14,20 +16,27 @@ const ICONS = [
   'M12 7c-2-1.5-5-2-8-1.5v12c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-12c-3-.5-6 0-8 1.5zM12 7v12',
 ]
 
-// Sectores numa lista com linhas: ícone pequeno, nome e uma frase.
+// Sectores numa lista com linhas: ícone pequeno, nome e uma frase. Ao
+// entrar no ecrã, linha a linha, o ícone desenha-se, a linha de baixo
+// estende-se e o texto aparece.
 export default function Sectors() {
   const { t } = useLang()
   return (
     <section id="sectores" className="sec sec--white" aria-labelledby="sectores-title">
       <div className="wrap">
-        <h2 id="sectores-title" className="sec__title" data-reveal>
-          {t.sectors.title}
+        <h2 id="sectores-title" className="sec__title words" data-reveal>
+          <Words text={t.sectors.title} />
         </h2>
         <ul className="sectors">
           {t.sectors.items.map((item, i) => (
-            <li key={item.title} className="sector" data-reveal>
+            <li
+              key={item.title}
+              className="sector"
+              data-reveal
+              style={{ '--reveal-delay': `${i * 160}ms` } as CSSProperties}
+            >
               <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
-                <path d={ICONS[i]} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d={ICONS[i]} pathLength={1} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
