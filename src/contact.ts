@@ -18,3 +18,8 @@ export function whatsappLink(subject?: string) {
     : 'Olá, TIVA TECH. Gostava de falar sobre um projecto.'
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 }
+
+// Abre o WhatsApp com uma mensagem já escrita (formulário de contacto).
+export function whatsappMessage(text: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
+}

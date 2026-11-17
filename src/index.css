@@ -1,24 +1,19 @@
-/* Identidade TIVA TECH: branco e azuis da marca, uma tinta escura para o
-   texto corrido, Unbounded nos títulos e Work Sans no texto. */
+/* Base: cores da marca TIVA TECH (azul, azul-escuro e o ciano do T).
+   Títulos em Source Serif 4, texto em Source Sans 3. A abertura mantém a
+   Work Sans. */
 :root {
   --white: #ffffff;
   --blue: #16479f;
-  --blue-field: #144496;
-  --blue-deep: #103a82;
-  --blue-night: #0d3170;
-  --blue-bright: #3b78dc;
-  --blue-pale: #9cc4f2;
-  --blue-mist: #e3ecf8;
-  --blue-wash: #eef4fd;
-  --on-blue: #ffffff;
-  --on-blue-soft: #c9d8f2;
-  --ink: #1b2433;
+  --navy: #0b1d3f;
+  --cyan: #19b5d6;
+  --light: #eef3fa;
+  --ink: #13213d;
+  --ink-soft: #4a5671;
+  --rule: #d5ddea;
 
-  --display: 'Unbounded', 'Arial Black', sans-serif;
-  --text: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
-
-  --container: 1200px;
-  --radius: 16px;
+  --font: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --intro-font: 'Work Sans', 'Helvetica Neue', Arial, sans-serif;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -30,76 +25,55 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background: var(--white);
+  min-height: 100dvh;
+  background: var(--navy);
   color: var(--ink);
-  font: 400 1.0625rem/1.55 var(--text);
+  font: 400 1.125rem/1.6 var(--font);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 h1,
 h2,
-h3 {
-  margin: 0;
-  color: var(--blue);
-  text-wrap: balance;
-}
-
+h3,
 p,
-dl,
-dd,
+ul,
+ol,
 figure {
   margin: 0;
 }
 
-img {
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+img,
+video {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
 a {
-  color: var(--blue);
-}
-a:hover {
-  color: var(--blue-deep);
+  color: inherit;
 }
 
 ::selection {
-  background: var(--blue-pale);
-  color: var(--blue-deep);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue-bright);
+  outline: 2px solid var(--cyan);
   outline-offset: 3px;
-}
-
-.wrap {
-  width: 100%;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.title {
-  font-family: var(--display);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-.title--section {
-  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
-}
-
-.lead {
-  font-size: 1.0625rem;
-  max-width: 52ch;
 }
 
 .visually-hidden {
@@ -116,82 +90,26 @@ a:hover {
   top: 12px;
   left: 12px;
   z-index: 100;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
   background: var(--white);
   color: var(--blue);
   font-weight: 600;
+  text-decoration: none;
   transform: translateY(-200%);
 }
 .skip-link:focus {
   transform: none;
 }
 
-/* Botões: um só formato, cantos de 8px. */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 0 24px;
-  border: 0;
-  border-radius: 8px;
-  background: var(--blue);
-  color: var(--white);
-  font: 600 1rem/1 var(--text);
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    background-color 180ms ease,
-    color 180ms ease,
-    transform 140ms ease;
-}
-.btn:hover {
-  background: var(--blue-deep);
-  color: var(--white);
-}
-.btn:active {
-  transform: scale(0.97);
-}
-.btn--light {
-  background: var(--white);
-  color: var(--blue);
-}
-.btn--light:hover {
-  background: var(--blue-mist);
-  color: var(--blue-deep);
-}
-.btn--ghost {
-  background: transparent;
-  color: var(--blue);
-  box-shadow: inset 0 0 0 2px var(--blue);
-}
-.btn--ghost:hover {
-  background: var(--blue-mist);
-  color: var(--blue-deep);
-}
-.btn--field {
-  background: var(--blue-field);
-}
-
-.link {
-  font-weight: 600;
-  text-decoration: none;
-}
-.link:hover {
-  text-decoration: underline;
-}
-
 /* Entradas: sobem uma vez ao entrar no ecrã (ver useReveal.ts). Sem
    JavaScript ficam visíveis. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(8px);
   transition:
-    opacity 800ms var(--ease-out) var(--reveal-delay, 0ms),
-    transform 800ms var(--ease-out) var(--reveal-delay, 0ms);
+    opacity 700ms var(--ease-out) var(--reveal-delay, 0ms),
+    transform 700ms var(--ease-out) var(--reveal-delay, 0ms);
 }
 .js [data-reveal].is-in {
   opacity: 1;

@@ -1,29 +1,107 @@
-import heroImage from '../assets/photos/hero-workstation.jpg'
+import { useEffect, useRef, useState } from 'react'
+import bgVideo from '../assets/bg.mp4'
+import mark from '../assets/t-branco.png'
 import { useLang } from '../LangContext'
 
-// Primeira impressão: o que a TivaTech resolve, uma acção principal e uma
-// alternativa, e uma fotografia de trabalho real sem rostos.
+const TYPE_MS = 75
+const DELETE_MS = 35
+const HOLD_MS = 1800
+const GAP_MS = 350
+
+// Escreve cada palavra letra a letra, espera, apaga e passa à seguinte.
+// Com "reduzir movimento" troca a palavra inteira de 3 em 3 segundos.
+function useTypewriter(words: string[]) {
+  const [text, setText] = useState('')
+
+  useEffect(() => {
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let word = 0
+    let timer: number
+
+    if (calm) {
+      const show = () => {
+        setText(words[word])
+        word = (word + 1) % words.length
+        timer = window.setTimeout(show, 3000)
+      }
+      timer = window.setTimeout(show, 0)
+      return () => window.clearTimeout(timer)
+    }
+
+    let chars = 0
+    let deleting = false
+    const tick = () => {
+      const full = words[word]
+      if (!deleting) {
+        chars += 1
+        setText(full.slice(0, chars))
+        if (chars === full.length) {
+          deleting = true
+          timer = window.setTimeout(tick, HOLD_MS)
+          return
+        }
+        timer = window.setTimeout(tick, TYPE_MS)
+      } else {
+        chars -= 1
+        setText(full.slice(0, chars))
+        if (chars === 0) {
+          deleting = false
+          word = (word + 1) % words.length
+          timer = window.setTimeout(tick, GAP_MS)
+          return
+        }
+        timer = window.setTimeout(tick, DELETE_MS)
+      }
+    }
+    timer = window.setTimeout(tick, GAP_MS)
+    return () => window.clearTimeout(timer)
+  }, [words])
+
+  return text
+}
+
+// Ecrã inteiro com vídeo lento por trás; o "T" grande à esquerda e, ao lado,
+// "Especializada em" com os serviços a escreverem-se sozinhos.
 export default function Hero() {
   const { t } = useLang()
+  const ref = useRef<HTMLVideoElement>(null)
+  const typed = useTypewriter(t.hero.words)
+
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const sync = () => {
+      video.playbackRate = 0.5
+      if (calm.matches) video.pause()
+      else video.play().catch(() => {})
+    }
+    sync()
+    video.addEventListener('loadedmetadata', sync)
+    calm.addEventListener('change', sync)
+    return () => {
+      video.removeEventListener('loadedmetadata', sync)
+      calm.removeEventListener('change', sync)
+    }
+  }, [])
+
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
-      <div className="hero__glow" aria-hidden="true" />
-      <div className="wrap hero__grid">
-        <div className="hero__copy">
-          <h1 id="hero-title" className="title hero__title">
+      <video ref={ref} className="hero__bg" src={bgVideo} muted loop playsInline preload="auto" aria-hidden="true" />
+      <div className="wrap hero__content">
+        <img className="hero__mark" src={mark} alt="" width={190} height={159} data-reveal />
+        <div data-reveal>
+          <h1 id="hero-title" className="visually-hidden">
             {t.hero.title}
           </h1>
-          <p className="hero__lead">{t.hero.lead}</p>
-          <div className="hero__actions">
-            <a className="btn" href="#proposta">
-              {t.hero.primary}
-            </a>
-            <a className="btn btn--ghost" href="#projectos">
-              {t.hero.secondary}
-            </a>
-          </div>
+          <p className="hero__lead" aria-hidden="true">
+            {t.hero.lead}
+          </p>
+          <p className="hero__typed" aria-hidden="true">
+            {typed}
+            <span className="hero__cursor" />
+          </p>
         </div>
-        <img className="hero__image" src={heroImage} alt={t.hero.imageAlt} width={1400} height={933} />
       </div>
     </section>
   )

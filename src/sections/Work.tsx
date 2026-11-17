@@ -53,38 +53,27 @@ function ProjectVideo({ src, poster }: { src: string; poster: string }) {
   )
 }
 
-// Projectos reais, cada um com um recorte do seu vídeo promocional.
+// Projectos reais em cartões: o vídeo promocional ocupa o cartão, com o
+// nome e o tipo por cima, e a descrição por baixo.
 export default function Work() {
   const { t } = useLang()
   return (
-    <section id="projectos" className="section" aria-labelledby="proj-title">
+    <section id="projectos" className="sec sec--navy" aria-labelledby="proj-title">
       <div className="wrap">
-        <div className="section__head">
-          <div>
-            <h2 id="proj-title" className="title title--section" data-reveal>
-              {t.work.title}
-            </h2>
-            <p className="lead section__lead">{t.work.lead}</p>
-          </div>
-          <a className="btn btn--ghost" href="#projectos">
-            {t.work.all}
-          </a>
-        </div>
+        <h2 id="proj-title" className="sec__title" data-reveal>
+          {t.work.title}
+        </h2>
         <div className="cases">
           {t.work.items.map((item, i) => (
             <article key={item.name} className="case" data-reveal>
-              <ProjectVideo src={MEDIA[i].video} poster={MEDIA[i].poster} />
-              <div className="case__body">
-                <span className="case__kind">{item.kind}</span>
-                <h3 className="case__name">{item.name}</h3>
-                <p className="case__subtitle">{item.subtitle}</p>
-                <p>{item.text}</p>
-                <ul className="case__tags">
-                  {item.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
+              <div className="case__media">
+                <ProjectVideo src={MEDIA[i].video} poster={MEDIA[i].poster} />
+                <div className="case__label">
+                  <h3>{item.name}</h3>
+                  <span>{item.kind}</span>
+                </div>
               </div>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>

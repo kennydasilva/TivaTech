@@ -1,17 +1,42 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import Intro from './components/Intro'
 import { content } from './content'
 import { langFromPath, pathFor, type Lang } from './i18n'
 import { LangContext } from './LangContext'
-import { About, Cta, Faq, Hero, Process, Services, Technologies, WhatWeDo, Why, Work } from './sections'
+import { About, Contact, Faq, Hero, Needs, Process, Sectors, Services, Work } from './sections'
 import useReveal from './useReveal'
-import './sections/sections.css'
+import './site.css'
+
+const INTRO_SEEN = 'tiva-intro-visto'
+
+// A abertura passa uma vez por sessão do browser, e nunca com "reduzir movimento".
+function shouldPlayIntro() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
+  try {
+    return !sessionStorage.getItem(INTRO_SEEN)
+  } catch {
+    return true
+  }
+}
 
 export default function App() {
   const [lang, setLang] = useState<Lang>(() => langFromPath(window.location.pathname))
+  const [intro, setIntro] = useState(shouldPlayIntro)
   const t = content[lang]
-  useReveal(lang)
+  // As entradas só começam quando a abertura sai do ecrã.
+  useReveal(intro ? null : lang)
+
+  const endIntro = useCallback(() => setIntro(false), [])
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(INTRO_SEEN, '1')
+    } catch {
+      // Sem sessionStorage a abertura volta a passar; não faz mal.
+    }
+  }, [])
 
   // Idioma, título e descrição da página acompanham o idioma escolhido.
   useEffect(() => {
@@ -36,23 +61,25 @@ export default function App() {
 
   return (
     <LangContext.Provider value={{ lang, t }}>
-      <a className="skip-link" href="#conteudo">
-        {t.skip}
-      </a>
-      <Header onLangChange={changeLang} />
-      <main id="conteudo">
-        <Hero />
-        <WhatWeDo />
-        <Services />
-        <Technologies />
-        <Work />
-        <Why />
-        <Process />
-        <About />
-        <Faq />
-        <Cta />
-      </main>
-      <Footer />
+      {intro && <Intro onDone={endIntro} />}
+      <div className="page" inert={intro}>
+        <a className="skip-link" href="#conteudo">
+          {t.skip}
+        </a>
+        <Header onLangChange={changeLang} />
+        <main id="conteudo">
+          <Hero />
+          <About />
+          <Services />
+          <Needs />
+          <Work />
+          <Sectors />
+          <Process />
+          <Faq />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </LangContext.Provider>
   )
 }

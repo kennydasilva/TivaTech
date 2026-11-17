@@ -4,8 +4,10 @@ import { useEffect } from 'react'
 // classe is-in quando entram no ecrã, uma vez, com um pequeno atraso em
 // sequência. Sem JavaScript (sem a classe .js no <html>) ficam visíveis.
 // Corre de novo quando muda o idioma (key), porque os textos são outros.
-export default function useReveal(key?: string) {
+// Com key a null (durante a abertura) não observa nada.
+export default function useReveal(key: string | null) {
   useEffect(() => {
+    if (key === null) return
     const items = document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-in)')
     const io = new IntersectionObserver(
       (entries) => {

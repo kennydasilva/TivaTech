@@ -1,18 +1,14 @@
 import { useLang } from '../LangContext'
 
-// Perguntas que tiram dúvidas antes do contacto. Usa <details>, por isso
-// abre e fecha sem JavaScript e com o teclado.
+// Perguntas com <details>: abrem e fecham sem JavaScript e com o teclado.
 export default function Faq() {
   const { t } = useLang()
   return (
-    <section id="perguntas" className="section section--wash" aria-labelledby="faq-title">
-      <div className="wrap split split--faq">
-        <div>
-          <h2 id="faq-title" className="title title--section" data-reveal>
-            {t.faq.title}
-          </h2>
-          <p className="lead section__lead">{t.faq.lead}</p>
-        </div>
+    <section id="perguntas" className="sec sec--white" aria-labelledby="faq-title">
+      <div className="wrap split">
+        <h2 id="faq-title" className="sec__title" data-reveal>
+          {t.faq.title}
+        </h2>
         <div className="faq">
           {t.faq.items.map((item) => (
             <details key={item.q} className="faq__item">
