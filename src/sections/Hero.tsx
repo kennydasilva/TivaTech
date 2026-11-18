@@ -62,7 +62,8 @@ function useTypewriter(words: string[]) {
 }
 
 // Ecrã inteiro com vídeo lento por trás; o "T" grande à esquerda e, ao lado,
-// "Especializada em" com os serviços a escreverem-se sozinhos.
+// "Uma empresa inovadora, especializada em" com os serviços a escreverem-se
+// sozinhos.
 export default function Hero() {
   const { t } = useLang()
   const ref = useRef<HTMLVideoElement>(null)
@@ -96,13 +97,21 @@ export default function Hero() {
             {t.hero.title}
           </h1>
           <p className="hero__lead words" aria-hidden="true" data-reveal>
+            <Words text={t.hero.intro} />
+          </p>
+          <p
+            className="hero__lead words"
+            aria-hidden="true"
+            data-reveal
+            style={{ '--reveal-delay': '450ms' } as CSSProperties}
+          >
             <Words text={t.hero.lead} />
           </p>
           <p
             className="hero__typed"
             aria-hidden="true"
             data-reveal
-            style={{ '--reveal-delay': '500ms' } as CSSProperties}
+            style={{ '--reveal-delay': '1000ms' } as CSSProperties}
           >
             {typed}
             <span className="hero__cursor" />
