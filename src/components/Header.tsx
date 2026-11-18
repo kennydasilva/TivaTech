@@ -16,7 +16,7 @@ export default function Header({ onLangChange }: { onLangChange: (lang: Lang) =>
       </a>
       <div className="top__end">
         <nav className="top__nav" aria-label={t.nav.label}>
-          <NavLinks />
+          <NavLinks about={false} />
         </nav>
         <a className="top__contact" href="#contacto">
           {t.nav.contact}
