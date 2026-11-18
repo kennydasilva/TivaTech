@@ -442,41 +442,60 @@
 }
 
 /* Projectos: cartões com o vídeo e o nome por cima */
-.cases {
+.product {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px 32px;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px 64px;
+  align-items: center;
 }
-.case__media {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 4px solid var(--cyan);
-  background: #000;
+.product + .product {
+  margin-top: 96px;
 }
-.case__media .case__video {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: top;
+.product__kind {
+  color: var(--cyan);
+  font-weight: 600;
 }
-.case__label {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 64px 28px 24px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+.product__name {
+  margin-top: 6px;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.1;
 }
-.case__label h3 {
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
-  line-height: 1.2;
-}
-.case__label span {
+.product__text {
+  max-width: 34rem;
+  margin-top: 16px;
   color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1875rem;
 }
-.case > p {
-  margin-top: 18px;
-  color: rgba(255, 255, 255, 0.82);
+.product__features {
+  display: grid;
+  gap: 0;
+  max-width: 34rem;
+  margin-top: 28px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.product__features li {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Imagem do produto, com ligação para o site. */
+.product__shot {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.product__shot img {
+  width: 100%;
+  transition: transform 400ms var(--ease-out);
+}
+.product__shot:hover img {
+  transform: scale(1.02);
+}
+.product__cta {
+  margin-top: 32px;
 }
 
 /* Para quem trabalhamos: lista com linhas, ícone pequeno ao lado do nome */
@@ -713,7 +732,7 @@
   }
   .split,
   .service,
-  .cases,
+  .product,
   .foot__grid {
     grid-template-columns: 1fr;
   }

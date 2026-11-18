@@ -6,7 +6,7 @@ export default function NavLinks() {
   return (
     <>
       <a href="#servicos">{t.nav.services}</a>
-      <a href="#projectos">{t.nav.work}</a>
+      <a href="#produtos">{t.nav.products}</a>
       <a href="#sobre">{t.nav.about}</a>
       <a href="#contacto">{t.nav.contact}</a>
     </>

@@ -21,7 +21,7 @@ const pt = {
   nav: {
     label: 'Principal',
     services: 'Serviços',
-    work: 'Projectos',
+    products: 'Produtos',
     about: 'Sobre nós',
     contact: 'Contacto',
     language: 'Idioma',
@@ -74,18 +74,21 @@ const pt = {
       },
     ],
   },
-  work: {
-    title: 'Projectos',
+  products: {
+    title: 'Produtos',
     items: [
       {
-        kind: 'denúncias de trânsito',
-        name: 'SGDIT',
-        text: 'O cidadão filma a infracção de trânsito e envia o vídeo pelo telemóvel. O sistema analisa o vídeo sozinho e o caso chega ao posto policial certo, com a prova guardada.',
-      },
-      {
-        kind: 'treino e bem-estar',
-        name: 'App de treino',
-        text: 'Um treinador virtual monta o plano de treino de cada pessoa. Tem mais de 1300 exercícios com demonstração, vídeos de treino, yoga e meditação.',
+        name: 'TivaCV',
+        kind: 'Criação de currículos',
+        url: 'https://tivacv.netlify.app/',
+        cta: 'Experimentar o TivaCV',
+        imageAlt: 'Página inicial do TivaCV, com dois modelos de currículo',
+        text: 'Uma plataforma que ajuda a criar um CV profissional em poucos minutos.',
+        features: [
+          'Vários modelos à escolha',
+          'Melhoria do texto com inteligência artificial',
+          'Tradução do CV para inglês',
+        ],
       },
     ],
   },
@@ -160,7 +163,7 @@ const en: Content = {
   nav: {
     label: 'Main',
     services: 'Services',
-    work: 'Work',
+    products: 'Products',
     about: 'About',
     contact: 'Contact',
     language: 'Language',
@@ -211,18 +214,21 @@ const en: Content = {
       },
     ],
   },
-  work: {
-    title: 'Work',
+  products: {
+    title: 'Products',
     items: [
       {
-        kind: 'traffic reports',
-        name: 'SGDIT',
-        text: 'Citizens film a traffic violation and send the video from their phone. The system checks the video on its own and the case goes to the right police station, with the evidence saved.',
-      },
-      {
-        kind: 'fitness and wellbeing',
-        name: 'Training app',
-        text: 'A virtual coach builds a training plan for each person. It has over 1,300 exercises with demonstrations, plus workout, yoga and meditation videos.',
+        name: 'TivaCV',
+        kind: 'CV builder',
+        url: 'https://tivacv.netlify.app/',
+        cta: 'Try TivaCV',
+        imageAlt: 'TivaCV home page, showing two CV templates',
+        text: 'A platform that helps you create a professional CV in a few minutes.',
+        features: [
+          'A choice of templates',
+          'Text improvements with artificial intelligence',
+          'Translation of your CV into English',
+        ],
       },
     ],
   },
